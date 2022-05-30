@@ -3,12 +3,18 @@ import React from 'react';
 import { ImageBackground, Pressable, Text, View } from 'react-native';
 import { Inter_600SemiBold, useFonts } from '@expo-google-fonts/inter';
 import SimpleLineIcons  from 'react-native-vector-icons/SimpleLineIcons';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavState, toggleFavourite } from '../redux';
 
-const CharacterCard = ({ image, name }) => {
+const CharacterCard = ({ id, image, name }) => {
   let [fontsLoaded] = useFonts({
       Inter_600SemiBold,
   });
-  const [ color, setColor ] = React.useState('white')
+  
+  const favState = useSelector(state => selectFavState(id, state));
+  const dispatch = useDispatch();
+  const color = favState ? '#C72828' : '#FFFFFF';
+
 
   return(
     <ImageBackground source={image} style={{ aspectRatio: 1 }}>
@@ -17,7 +23,7 @@ const CharacterCard = ({ image, name }) => {
         style={{position: 'absolute', left: 0, right: 0, top: 0, height: '36.5%'}} />
       <Pressable 
         style={{position: 'absolute', top: 7, left: 0, right: 7, bottom: 0, justifyContent: 'flex-start', alignItems: 'flex-end'}}
-        onPress = {() => setColor(color=='#FFFFFF'? '#C72828' : '#FFFFFF')}>
+        onPress = {() => dispatch(toggleFavourite(id))}>
         <SimpleLineIcons color={color} name={"heart"} size={16} />
       </Pressable>
       <LinearGradient 
