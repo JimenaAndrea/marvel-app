@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CharacterScreen, FavouritesScreen, HomeScreen  } from './src/screens';
 import { Provider as ReduxProvider} from 'react-redux';
 import { store } from './src/redux';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const Stack = createNativeStackNavigator();
 const HomeStack = () => (
@@ -22,15 +23,19 @@ const FavouritesStack = () => (
 
 const Tab = createBottomTabNavigator();
 
+const queryClient = new QueryClient();
+
 export default function App() {
   return (
     <ReduxProvider store={store}>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={{ headerShown: false }}>
-          <Tab.Screen name="Home" component={HomeStack} />
-          <Tab.Screen name="Favourites" component={FavouritesStack} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <Tab.Navigator screenOptions={{ headerShown: false }}>
+            <Tab.Screen name="Home" component={HomeStack} />
+            <Tab.Screen name="Favourites" component={FavouritesStack} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </QueryClientProvider>
     </ReduxProvider>
     
     
