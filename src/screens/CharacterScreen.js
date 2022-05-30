@@ -1,10 +1,13 @@
 import React from 'react';
 import { Text, View } from 'react-native'
 
-const CharacterScreen = () => (
+const CharacterScreen = ({ route }) => {
+  const id = route.params.id
+  return(
     <View>
-        <Text>Hello World!</Text>
+      <Text>Character ID: {id}</Text>
     </View>
-)
+  )
+}
 
 export default CharacterScreen;
