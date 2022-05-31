@@ -14,5 +14,12 @@ const reducers = combineReducers({ favourites: favouritesReducer });
 const persistedReducer = persistReducer( persistConfig, reducers);
 
 export default configureStore({
+  // Disable serializableCheck middleware.
+  // Redux-persist uses non-serializable values. 
+  // Non-serializable values are never saved in to the state.
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+    ImmutableStateInvariantMiddleware: { warnAfter: 500 }
+  }),
   reducer: persistedReducer
 });
