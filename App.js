@@ -6,6 +6,8 @@ import { CharacterScreen, FavouritesScreen, HomeScreen  } from './src/screens';
 import { Provider as ReduxProvider} from 'react-redux';
 import { store } from './src/redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
 const Stack = createNativeStackNavigator();
 const HomeStack = () => (
@@ -25,17 +27,21 @@ const Tab = createBottomTabNavigator();
 
 const queryClient = new QueryClient();
 
+const persistor = persistStore(store);
+
 export default function App() {
   return (
     <ReduxProvider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={{ headerShown: false }}>
-            <Tab.Screen name="Home" component={HomeStack} />
-            <Tab.Screen name="Favourites" component={FavouritesStack} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </QueryClientProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <QueryClientProvider client={queryClient}>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={{ headerShown: false }}>
+              <Tab.Screen name="Home" component={HomeStack} />
+              <Tab.Screen name="Favourites" component={FavouritesStack} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </QueryClientProvider>
+      </PersistGate>
     </ReduxProvider>
     
     
