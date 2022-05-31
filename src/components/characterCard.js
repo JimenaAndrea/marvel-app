@@ -1,17 +1,12 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { ImageBackground, Pressable, Text, View } from 'react-native';
-import { Inter_600SemiBold, useFonts } from '@expo-google-fonts/inter';
 import SimpleLineIcons  from 'react-native-vector-icons/SimpleLineIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavState, toggleFavourite } from '../redux';
 import { useNavigation } from '@react-navigation/native';
 
 const CharacterCard = ({ id, image, name }) => {
-  let [fontsLoaded] = useFonts({
-      Inter_600SemiBold,
-  });
-  
   const favState = useSelector(state => selectFavState(id, state));
   const dispatch = useDispatch();
   const color = favState ? '#C72828' : '#FFFFFF';

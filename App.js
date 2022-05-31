@@ -8,6 +8,7 @@ import { store } from './src/redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
+import { Inter_600SemiBold, useFonts } from '@expo-google-fonts/inter';
 
 const Stack = createNativeStackNavigator();
 const HomeStack = () => (
@@ -30,6 +31,10 @@ const queryClient = new QueryClient();
 const persistor = persistStore(store);
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    Inter_600SemiBold,
+  });
+
   return (
     <ReduxProvider store={store}>
       <PersistGate loading={null} persistor={persistor}>
