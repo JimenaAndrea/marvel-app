@@ -36,8 +36,8 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <NavigationContainer>
             <Tab.Navigator screenOptions={{ headerShown: false }}>
-              <Tab.Screen name="Home" component={HomeStack} />
-              <Tab.Screen name="Favourites" component={FavouritesStack} />
+              <Tab.Screen name="HomeStack" component={HomeStack} options={{ tabBarLabel: 'Home' }} />
+              <Tab.Screen name="FavouritesStack" component={FavouritesStack} options={{ tabBarLabel: 'Favs' }} />
             </Tab.Navigator>
           </NavigationContainer>
         </QueryClientProvider>
