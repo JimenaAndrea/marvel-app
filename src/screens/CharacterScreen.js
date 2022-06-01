@@ -33,7 +33,7 @@ const CharacterScreen = ({ route }) => {
           <CharacterCard image={image} name={data?.name} id={id} fav={false} fontSize={32} />
           <Pressable style={styles.backButton} onPress={() => navigation.goBack()} hitSlop={20} >
             <SimpleLineIcons color={'white'} name={'arrow-left'} size={20} />
-            <Text style={{color: 'white', fontSize: 24, paddingLeft: 10, fontFamily: 'Inter_600SemiBold'}}>Back</Text>
+            <Text style={{color: 'white', fontSize: 24, paddingLeft: '2%', fontFamily: 'Inter_600SemiBold'}}>Back</Text>
           </Pressable>
           <Text style={styles.description}>
             {data?.description == '' ? 'No description' : data?.description}
@@ -63,16 +63,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 30,
     position: 'absolute',
-    bottom: 40,
-    right: 35,
+    bottom: '7%',
+    right: '10%',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     width: 60,
     height: 60
   },
   backButton: {
     position: 'absolute',
-    left: 23,
-    top: 30,
+    left: '5%',
+    top: '5%',
     flexDirection: 'row',
     alignItems: 'center'
   }
