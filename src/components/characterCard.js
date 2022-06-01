@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFavState, toggleFavourite } from '../redux';
 import { useNavigation } from '@react-navigation/native';
 
-const CharacterCard = ({ id, image, fav, fontSize, name }) => {
+const CharacterCard = ({ id, image, fav, favSize, fontSize, name }) => {
   const favState = useSelector(state => selectFavState(id, state));
   const dispatch = useDispatch();
   const color = favState ? '#C72828' : '#FFFFFF';
@@ -27,7 +27,7 @@ const CharacterCard = ({ id, image, fav, fontSize, name }) => {
             hitSlop={20}
             style={{position: 'absolute', top: '6%', right: '6%',  justifyContent: 'flex-start', alignItems: 'flex-end'}}
             onPress = {() => dispatch(toggleFavourite(id))}>
-            <SimpleLineIcons color={color} name={"heart"} size={16} />
+            <SimpleLineIcons color={color} name={"heart"} size={favSize} />
           </Pressable>
           :
           <></>

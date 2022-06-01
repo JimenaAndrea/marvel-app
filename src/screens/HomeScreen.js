@@ -8,7 +8,7 @@ import { useQuery } from 'react-query';
 function renderItem({ item }) {
   const image = {uri: item.thumbnail.path + '/standard_large.' + item.thumbnail.extension};
   return(
-    <CharacterCard id={item.id} image={image} fav={true} fontSize={12} name={item.name} />
+    <CharacterCard id={item.id} image={image} fav={true} favSize={16} fontSize={12} name={item.name} />
   )
 }
 

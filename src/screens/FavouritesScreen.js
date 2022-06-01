@@ -10,7 +10,7 @@ function renderItem({ item }) {
   const image = {uri: item.thumbnail.path + '/standard_xlarge.' + item.thumbnail.extension};
   
   return(
-    <CharacterCard id={item.id} image={image} fav={true} fontSize={17} name={item.name} />
+    <CharacterCard id={item.id} image={image} fav={true} favSize={23} fontSize={17} name={item.name} />
   )
 }
 
