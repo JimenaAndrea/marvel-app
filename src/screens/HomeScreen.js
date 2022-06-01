@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { CharacterCard, Header } from '../components';
+import { CharacterCard } from '../components';
 import { FlatGrid } from 'react-native-super-grid';
 import { requestCharacters } from '../marvelAPI';
 import { useQuery } from 'react-query';
@@ -21,17 +21,14 @@ const HomeScreen = () => {
         <Text style={{color: 'white'}}>Loading</Text>
       </View> 
       :
-      <View style={{flex: 1}}>
-        <Header />
-        <FlatGrid
-          itemDimension={100}
-          data={data}
-          renderItem={renderItem}
-          maxItemsPerRow={3}
-          spacing={10}
-          style={{backgroundColor: '#000000'}}
-        />
-      </View>
+      <FlatGrid
+        itemDimension={100}
+        data={data}
+        renderItem={renderItem}
+        maxItemsPerRow={3}
+        spacing={10}
+        style={{backgroundColor: '#000000', paddingTop: 80}}
+      />
   )
 }
 
