@@ -9,6 +9,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { Inter_400Regular, Inter_600SemiBold, useFonts } from '@expo-google-fonts/inter';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Stack = createNativeStackNavigator();
 const HomeStack = () => (
@@ -42,8 +44,20 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <NavigationContainer>
             <Tab.Navigator screenOptions={{ headerShown: false }}>
-              <Tab.Screen name="HomeStack" component={HomeStack} options={{ tabBarLabel: 'Home' }} />
-              <Tab.Screen name="FavouritesStack" component={FavouritesStack} options={{ tabBarLabel: 'Favs' }} />
+              <Tab.Screen name="HomeStack" component={HomeStack} 
+                options={{ 
+                  tabBarLabel: 'Home', 
+                  tabBarIcon: ({ focused, color, size }) => (
+                    <MaterialCommunityIcons color={color} name={'home-variant'} size={size} />
+                  )
+                }} />
+              <Tab.Screen name="FavouritesStack" component={FavouritesStack}
+                options={{ 
+                  tabBarLabel: 'Favs',
+                  tabBarIcon: ({ focused, color, size }) => (
+                    <SimpleLineIcons color={color} name={'heart'} size={20} />
+                  )
+                }} />
             </Tab.Navigator>
           </NavigationContainer>
         </QueryClientProvider>
