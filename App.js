@@ -11,16 +11,17 @@ import { persistStore } from 'redux-persist';
 import { Inter_400Regular, Inter_600SemiBold, useFonts } from '@expo-google-fonts/inter';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createNativeStackNavigator();
 const HomeStack = () => (
-  <Stack.Navigator>
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name='Home' component={HomeScreen} />
     <Stack.Screen name='Character' component={CharacterScreen} />
   </Stack.Navigator>
 )
 const FavouritesStack = () => (
-  <Stack.Navigator>
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name='Favourites' component={FavouritesScreen} />
     <Stack.Screen name='Character' component={CharacterScreen} />
   </Stack.Navigator>
@@ -43,7 +44,16 @@ export default function App() {
       <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <NavigationContainer>
-            <Tab.Navigator screenOptions={{ headerShown: false }}>
+            <StatusBar 
+              style={'light'}
+              translucent={false} 
+              backgroundColor={'#000000'}
+            />
+            <Tab.Navigator screenOptions={{ 
+              headerShown: false, 
+              tabBarStyle: {backgroundColor: '#121212'},
+              tabBarActiveTintColor: '#FFFFFF',
+              tabBarInactiveTintColor: '#DADADA',}}>
               <Tab.Screen name="HomeStack" component={HomeStack} 
                 options={{ 
                   tabBarLabel: 'Home', 

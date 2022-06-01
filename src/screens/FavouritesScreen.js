@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { CharacterCard } from '../components';
+import { CharacterCard, Header } from '../components';
 import { FlatGrid } from 'react-native-super-grid';
 import { requestCharacters } from '../marvelAPI';
 import { useQuery } from 'react-query';
@@ -21,15 +21,22 @@ const FavouritesScreen = () => {
 
   return(
     status==='loading' ?
-      <Text>Loading</Text> 
+      <View style={{flex: 1, backgroundColor: '#000000'}}>
+        <Text style={{color: 'white'}}>Loading</Text>
+      </View>
+       
       :
-      <FlatGrid
-        itemDimension={100}
-        data={favourites}
-        renderItem={renderItem}
-        maxItemsPerRow={2}
-        spacing={16}
-      />
+      <View style={{flex: 1}}>
+        <Header />
+        <FlatGrid
+          itemDimension={100}
+          data={favourites}
+          renderItem={renderItem}
+          maxItemsPerRow={2}
+          spacing={16}
+          style={{backgroundColor: '#000000'}}
+        />
+      </View>
   )
 }    
 

@@ -6,6 +6,7 @@ import { CharacterCard } from '../components';
 import SimpleLineIcons  from 'react-native-vector-icons/SimpleLineIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavState, toggleFavourite } from '../redux';
+import { useNavigation } from '@react-navigation/native';
 
 
 const CharacterScreen = ({ route }) => {
@@ -19,13 +20,21 @@ const CharacterScreen = ({ route }) => {
   const dispatch = useDispatch();
   const color = favState ? '#C72828' : '#FFFFFF';
 
+  const navigation = useNavigation();
+
   return(
     status==='loading' ?
-      <Text>Loading</Text> 
+      <View style={{flex: 1, backgroundColor: '#000000'}}>
+        <Text style={{color: 'white'}}>Loading</Text>
+      </View> 
       :
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: '#000000'}}>
         <ScrollView>
           <CharacterCard image={image} name={data?.name} id={id} fav={false} fontSize={32} />
+          <Pressable style={styles.backButton} onPress={() => navigation.goBack()} hitSlop={20} >
+            <SimpleLineIcons color={'white'} name={'arrow-left'} size={20} />
+            <Text style={{color: 'white', fontSize: 24, paddingLeft: 10, fontFamily: 'Inter_600SemiBold'}}>Back</Text>
+          </Pressable>
           <Text style={styles.description}>
             {data?.description == '' ? 'No description' : data?.description}
           </Text>
@@ -43,9 +52,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular', 
     lineHeight: 22, 
     textAlign: 'left', 
-    marginLeft: 18, 
-    marginTop: 27, 
-    marginRight: 62
+    marginLeft: '4%', 
+    marginTop: '3%', 
+    marginRight: '15%',
+    marginBottom: '15%',
+    color: 'rgba(188, 188, 188, 1)'
   },
   fab: {
     justifyContent: 'center',
@@ -58,6 +69,13 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60
   },
+  backButton: {
+    position: 'absolute',
+    left: 23,
+    top: 30,
+    flexDirection: 'row',
+    alignItems: 'center'
+  }
 })
 
 export default CharacterScreen;
