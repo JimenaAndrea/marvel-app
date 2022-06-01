@@ -12,6 +12,9 @@ import { Inter_400Regular, Inter_600SemiBold, useFonts } from '@expo-google-font
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StatusBar } from 'expo-status-bar';
+import * as NavigationBar from 'expo-navigation-bar';
+
+NavigationBar.setBackgroundColorAsync('#121212');
 
 const Stack = createNativeStackNavigator();
 const HomeStack = () => (
