@@ -7,6 +7,7 @@ import SimpleLineIcons  from 'react-native-vector-icons/SimpleLineIcons';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavState, toggleFavourite } from '../redux';
 import { useNavigation } from '@react-navigation/native';
+import Ripple from 'react-native-material-ripple';
 
 
 const CharacterScreen = ({ route }) => {
@@ -31,17 +32,19 @@ const CharacterScreen = ({ route }) => {
       <View style={{flex: 1, backgroundColor: '#000000'}}>
         <ScrollView>
           <CharacterCard image={image} name={data?.name} id={id} fav={false} fontSize={32} />
-          <Pressable style={styles.backButton} onPress={() => navigation.goBack()} hitSlop={20} >
+          {/* Back button*/}
+          <Ripple style={styles.backButton} onPress={() => navigation.goBack()} rippleColor='#FFFFFF' rippleSize={50} hitSlop={20} >
             <SimpleLineIcons color={'white'} name={'arrow-left'} size={20} />
             <Text style={{color: 'white', fontSize: 24, paddingLeft: '2%', fontFamily: 'Inter_600SemiBold'}}>Back</Text>
-          </Pressable>
+          </Ripple>
           <Text style={styles.description}>
             {data?.description == '' ? 'No description' : data?.description}
           </Text>
         </ScrollView>
-        <Pressable style={styles.fab} onPress={() => dispatch(toggleFavourite(id))} >
+        {/* Floating Action Button */}
+        <Ripple style={styles.fab} rippleColor='#FFFFFF' rippleSize={50} onPress={() => dispatch(toggleFavourite(id))}>
           <SimpleLineIcons color={color} name={'heart'} size={20} />
-        </Pressable>
+        </Ripple>
       </View>
   )
 }
