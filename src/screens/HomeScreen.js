@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { CharacterCard } from '../components';
 import { FlatGrid } from 'react-native-super-grid';
 import { requestCharacters } from '../marvelAPI';
@@ -17,8 +17,9 @@ const HomeScreen = () => {
 
   return(
     status==='loading' ?
-      <View style={{flex: 1, backgroundColor: '#000000'}}>
-        <Text style={{color: 'white'}}>Loading</Text>
+    
+      <View style={{flex: 1, backgroundColor: '#000000', justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size='large' color='#DADADA' />
       </View> 
       :
       <FlatGrid

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { requestCharacterById } from '../marvelAPI';
 import { useQuery } from 'react-query';
 import { CharacterCard } from '../components';
@@ -24,8 +24,8 @@ const CharacterScreen = ({ route }) => {
 
   return(
     status==='loading' ?
-      <View style={{flex: 1, backgroundColor: '#000000'}}>
-        <Text style={{color: 'white'}}>Loading</Text>
+      <View style={{flex: 1, backgroundColor: '#000000', justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size='large' color='#DADADA' />
       </View> 
       :
       <View style={{flex: 1, backgroundColor: '#000000'}}>
