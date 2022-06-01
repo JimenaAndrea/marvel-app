@@ -1,1 +1,1 @@
-export { requestCharacters } from './petitions';
+export { requestCharacterById, requestCharacters } from './petitions';
