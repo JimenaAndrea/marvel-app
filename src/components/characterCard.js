@@ -37,7 +37,7 @@ const CharacterCard = ({ id, image, fav, favSize, fontSize, name }) => {
         <LinearGradient 
           colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)']}
           locations={[0, 0.94]}
-          style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: '36.5%'}} />
+          style={{position: 'absolute', left: 0, right: 0, bottom: '-1%', height: '40%'}} />
         
         <View style={{position: 'absolute', top: 0, left: '4%', right: '4%', bottom: '9%', justifyContent: 'flex-end', alignItems: 'flex-start'}}>
           <Text style={{color: 'white', fontSize: fontSize, fontFamily: 'Inter_600SemiBold', fontWeight: '600', fontStyle: 'normal'}}>

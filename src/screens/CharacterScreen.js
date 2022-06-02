@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { requestCharacterById } from '../marvelAPI';
 import { useQuery } from 'react-query';
 import { CharacterCard } from '../components';
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFavState, toggleFavourite } from '../redux';
 import { useNavigation } from '@react-navigation/native';
 import Ripple from 'react-native-material-ripple';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const CharacterScreen = ({ route }) => {
@@ -20,6 +21,7 @@ const CharacterScreen = ({ route }) => {
   const favState = useSelector(state => selectFavState(id, state));
   const dispatch = useDispatch();
   const color = favState ? '#C72828' : '#FFFFFF';
+  const shadowColor = favState ? '#FF0000' :'transparent';
 
   const navigation = useNavigation();
 
@@ -32,10 +34,14 @@ const CharacterScreen = ({ route }) => {
       <View style={{flex: 1, backgroundColor: '#000000'}}>
         <ScrollView>
           <CharacterCard image={image} name={data?.name} id={id} fav={false} fontSize={32} />
+          {/* Extra top gradient*/}
+          <LinearGradient 
+            colors={['rgba(0, 0, 0, 0.8)', 'rgba(0, 0, 0, 0)']}
+            style={{position: 'absolute', left: 0, right: 0, top: 0, height: '15%'}} />
           {/* Back button*/}
           <Ripple style={styles.backButton} onPress={() => navigation.goBack()} rippleColor='#FFFFFF' rippleSize={50} hitSlop={20} >
             <SimpleLineIcons color={'white'} name={'arrow-left'} size={20} />
-            <Text style={{color: 'white', fontSize: 24, paddingLeft: '2%', fontFamily: 'Inter_600SemiBold'}}>Back</Text>
+            <Text style={{color: 'white', fontSize: 20, paddingLeft: '2%', fontFamily: 'Inter_600SemiBold'}}>Back</Text>
           </Ripple>
           <Text style={styles.description}>
             {data?.description == '' ? 'No description' : data?.description}
@@ -43,7 +49,10 @@ const CharacterScreen = ({ route }) => {
         </ScrollView>
         {/* Floating Action Button */}
         <Ripple style={styles.fab} rippleColor='#FFFFFF' rippleSize={50} onPress={() => dispatch(toggleFavourite(id))}>
-          <SimpleLineIcons color={color} name={'heart'} size={20} />
+            <SimpleLineIcons color={color} name={'heart'} size={20} 
+            style={{ width: 25, alignSelf: 'baseline', textShadowOffset:{width: 1, height: 1}, textShadowColor: shadowColor, textShadowRadius: 5  }}/>
+  
+ 
         </Ripple>
       </View>
   )
@@ -70,7 +79,9 @@ const styles = StyleSheet.create({
     right: '10%',
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     width: 60,
-    height: 60
+    height: 60,
+    padding: 20
+    
   },
   backButton: {
     position: 'absolute',
