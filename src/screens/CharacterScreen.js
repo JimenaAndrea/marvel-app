@@ -25,6 +25,8 @@ const CharacterScreen = ({ route }) => {
 
   const navigation = useNavigation();
 
+  const placeHolder = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus purus a nisi lobortis condimentum. Praesent viverra, turpis sed luctus euismod, felis massa volutpat est, vitae dapibus nibh quam at arcu. Praesent auctor ipsum vel mi vulputate tristique. Phasellus bibendum arcu neque, non aliquet sem ornare non. Mauris urna massa, auctor quis ligula ut, fermentum convallis odio. Maecenas tortor lorem, lobortis eu volutpat in, malesuada et dui. Fusce ornare nunc sapien, vel ultricies tortor consectetur sit amet. Proin vitae semper est. Cras fermentum placerat nisi, in placerat felis gravida vel. Proin vehicula ante at massa euismod congue.'
+
   return(
     status==='loading' ?
       <View style={{flex: 1, backgroundColor: '#000000', justifyContent: 'center', alignItems: 'center'}}>
@@ -44,7 +46,7 @@ const CharacterScreen = ({ route }) => {
             <Text style={{color: 'white', fontSize: 20, paddingLeft: '2%', fontFamily: 'Inter_600SemiBold'}}>Back</Text>
           </Ripple>
           <Text style={styles.description}>
-            {data?.description == '' ? 'No description' : data?.description}
+            {data?.description == '' ? placeHolder : data?.description}
           </Text>
         </ScrollView>
         {/* Floating Action Button */}
