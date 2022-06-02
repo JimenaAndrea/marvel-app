@@ -1,0 +1,1 @@
+export { requestCharacterById, requestCharacters } from './petitions';
