@@ -14,7 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 const CharacterScreen = ({ route }) => {
   const id = route.params.id;
 
-  const { data, status } = useQuery(['requestCharacterById', id], () => requestCharacterById(id));
+  const { data, status } = useQuery(['requestCharacterById', id], () => requestCharacterById(id), {staleTime: 1000 * 60 *5});
  
   const image = {uri: data?.thumbnail?.path + '/standard_amazing.' + data?.thumbnail?.extension};
 

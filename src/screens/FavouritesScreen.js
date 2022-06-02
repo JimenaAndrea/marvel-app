@@ -15,7 +15,7 @@ function renderItem({ item }) {
 }
 
 const FavouritesScreen = () => {
-  const { data, status } = useQuery('requestCharacters', requestCharacters);
+  const { data, status } = useQuery('requestCharacters', requestCharacters, {staleTime: 1000 * 60 *5});
   const favState = useSelector(state => state.favourites);
   const favourites = data.filter(element => favState[element.id]);
 

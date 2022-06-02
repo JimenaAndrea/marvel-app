@@ -13,7 +13,7 @@ function renderItem({ item }) {
 }
 
 const HomeScreen = () => {
-  const { data, status } = useQuery('requestCharacters', requestCharacters);
+  const { data, status } = useQuery('requestCharacters', requestCharacters, {staleTime: 1000 * 60 *5});
 
   return(
     status==='loading' ?
