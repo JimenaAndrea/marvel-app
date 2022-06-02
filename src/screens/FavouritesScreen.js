@@ -31,7 +31,7 @@ const FavouritesScreen = () => {
         renderItem={renderItem}
         maxItemsPerRow={2}
         spacing={16}
-        style={{backgroundColor: '#000000', paddingTop: 80}}
+        style={{backgroundColor: '#000000'}}
       />
   )
 }    

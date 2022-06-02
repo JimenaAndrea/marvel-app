@@ -28,7 +28,7 @@ const HomeScreen = () => {
         renderItem={renderItem}
         maxItemsPerRow={3}
         spacing={10}
-        style={{backgroundColor: '#000000', paddingTop: 80}}
+        style={{backgroundColor: '#000000'}}
       />
   )
 }
