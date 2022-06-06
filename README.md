@@ -74,7 +74,6 @@ Using only these technologies, when you close the application, all saved data is
 I have developed the application according to the figma designs that were given to me with the briefing. But in some cases I do it different or I added some details.
 
 ### Skipped
-- **Black top zone in home and favourites screens.** I do it with a component but it not fits with the flat grid component and it wasn't scrollable. I tried to made it with the flat grid style props, but it didn't work propertly. So I decided to remove it as it was going to take me too long to fix it.
 - **Tab bar navigation items layout.** In the design the items of the tab bar navigation have more space between them.
 
 ### Added
@@ -82,6 +81,7 @@ I have developed the application according to the figma designs that were given 
 - **Placeholder text in the detail screen of the characters that don't have description.** Some characters have no description and those that do are very short, so I added a placeholder to show how the screen scroll works.
 - **Black splash screen.**
 - **Navigation bar dark color.** Most smartphones now have the navigation keys integrated into the screen. To avoid that in this application it comes out white and has a lot of contrast with the interface, I have put it in the same color as the tab navigator.
+- **Black footer in home screen and favourites screen.** To visually reinforce the end of the scroll.
 
 ### Ideas
 - **Resizeable character card.** Right now, the character card component receives as props the values of the sizes of the font and fav item. The component could rescale the sizes of your items automatically.
