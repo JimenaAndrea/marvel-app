@@ -82,6 +82,7 @@ I have developed the application according to the figma designs that were given 
 - **Black splash screen.**
 - **Navigation bar dark color.** Most smartphones now have the navigation keys integrated into the screen. To avoid that in this application it comes out white and has a lot of contrast with the interface, I have put it in the same color as the tab navigator.
 - **Black footer in home screen and favourites screen.** To visually reinforce the end of the scroll.
+- **Activity indicator while data is being loaded.**
 
 ### Ideas
 - **Resizeable character card.** Right now, the character card component receives as props the values of the sizes of the font and fav item. The component could rescale the sizes of your items automatically.
