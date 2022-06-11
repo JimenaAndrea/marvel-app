@@ -32,6 +32,8 @@ const FavouritesScreen = () => {
         maxItemsPerRow={2}
         spacing={16}
         style={{backgroundColor: '#000000'}}
+        ListHeaderComponent={<View style={{ backgroundColor: '#000000', height: 70 }} />}
+        ListFooterComponent={<View style={{ backgroundColor: '#000000', height: 30 }} />}
       />
   )
 }    
